@@ -1,0 +1,85 @@
+
+configurations {
+	Toolset {
+		key : "PlatformToolset";
+        choices: { v141, v140, v120, v110, v100 };
+    };
+}
+
+nuget {
+
+   nuspec {
+      id = assimp;
+      version : 4.0.1;
+      title:  "Open Asset Import Library";
+      authors: { Assimp Authors };
+      licenseUrl: "https://opensource.org/licenses/BSD-3-Clause";
+      projectUrl: "https://github.com/assimp/assimp";
+      requireLicenseAcceptance:false;
+      summary: "A library to import and export various 3d-model-formats including scene-post-processing to generate missing render data.";
+	    copyright: "Copyright (c) 2006-2016, assimp team";
+      description: "Assimp library for VS2015 & VS2017";
+      tags: { native };
+   };
+ 
+   files {
+
+      nested1Include: {
+		    #destination = ${d_include}\assimp\;
+        "assimp\include\assimp\*.h", "assimp\include\assimp\*.inl"
+      };
+
+      nested2Include: {
+        #destination = ${d_include}\assimp\Compiler;
+        "assimp\include\assimp\Compiler\*.h", 
+      };
+
+      [x86,v140,release] {
+         lib: build_v140_x86\code\release\assimp-vc140-mt.lib;
+         bin: build_v140_x86\code\release\assimp-vc140-mt.dll;
+      };
+ 
+      [x86,v140,debug] {
+         lib: build_v140_x86\code\debug\assimp-vc140-mt.lib;
+         bin: build_v140_x86\code\debug\assimp-vc140-mt.dll;
+         symbols: build_v140_x86\code\debug\assimp-vc140-mt.pdb;
+      };
+
+      [x64,v140,release] {
+         lib: build_v140_x64\code\release\assimp-vc140-mt.lib;
+         bin: build_v140_x64\code\release\assimp-vc140-mt.dll;
+      };
+ 
+      [x64,v140,debug] {
+         lib: build_v140_x64\code\debug\assimp-vc140-mt.lib;
+         bin: build_v140_x64\code\debug\assimp-vc140-mt.dll;
+         symbols: build_v140_x64\code\debug\assimp-vc140-mt.pdb;
+      };
+
+      [x86,v141,release] {
+         lib: build_v141_x86\code\release\assimp-vc140-mt.lib;
+         bin: build_v141_x86\code\release\assimp-vc140-mt.dll;
+      };
+ 
+      [x86,v141,debug] {
+         lib: build_v141_x86\code\debug\assimp-vc140-mt.lib;
+         bin: build_v141_x86\code\debug\assimp-vc140-mt.dll;
+         symbols: build_v141_x86\code\debug\assimp-vc140-mt.pdb;
+      };
+
+      [x64,v141,release] {
+         lib: build_v141_x64\code\release\assimp-vc140-mt.lib;
+         bin: build_v141_x64\code\release\assimp-vc140-mt.dll;
+      };
+ 
+      [x64,v141,debug] {
+         lib: build_v141_x64\code\debug\assimp-vc140-mt.lib;
+         bin: build_v141_x64\code\debug\assimp-vc140-mt.dll;
+         symbols: build_v141_x64\code\debug\assimp-vc140-mt.pdb;
+      };
+   };
+
+   targets {
+	  Defines += HAS_ASSIMP;
+   };
+}
