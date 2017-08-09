@@ -1,5 +1,5 @@
 # get assimp to the correct version
-git clone -https://github.com/assimp/assimp.git assimp 
+git clone https://github.com/assimp/assimp.git assimp 
 cd assimp
 git checkout v4.0.1
 cd ..

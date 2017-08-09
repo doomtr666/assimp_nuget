@@ -9,7 +9,7 @@ configurations {
 nuget {
 
    nuspec {
-      id = assimp;
+      id = assimp_native;
       version : 4.0.1;
       title:  "Open Asset Import Library";
       authors: { Assimp Authors };
@@ -25,11 +25,16 @@ nuget {
    files {
 
       nested1Include: {
-		    #destination = ${d_include}\assimp\;
-        "assimp\include\assimp\*.h", "assimp\include\assimp\*.inl"
+		#destination = ${d_include}\assimp\;
+        "assimp\include\assimp\*.h", "assimp\include\assimp\*.hpp", "assimp\include\assimp\*.inl"
       };
 
       nested2Include: {
+      	#destination = ${d_include}\assimp\;
+      	"build_v140_x64\include\assimp\config.h"
+      };
+
+      nested3Include: {
         #destination = ${d_include}\assimp\Compiler;
         "assimp\include\assimp\Compiler\*.h", 
       };
